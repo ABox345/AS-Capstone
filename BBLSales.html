@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bring Big Beer Legends to your taps. Explore our draft lineup and connect with our venue sales team.">
+    <title>Big Beer Legends | On-Tap Partnerships</title>
+    <style>
+        :root {
+            --ink: #202522;
+            --forest: #123f35;
+            --pine: #0d3029;
+            --lime: #d4ed73;
+            --cream: #f5f1e8;
+            --paper: #fffdf8;
+            --rust: #c95c36;
+            --muted: #65706a;
+            --line: #d9d8ce;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--cream); color: var(--ink); font-family: Georgia, 'Times New Roman', serif; line-height: 1.5; }
+        h1, h2, h3, nav, button, input, select, textarea, .eyebrow, .tag { font-family: 'Trebuchet MS', 'Gill Sans', sans-serif; }
+        a { color: inherit; text-decoration: none; }
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--rust); outline-offset: 3px; }
+
+        .topline { background: var(--lime); color: var(--pine); font: 700 0.72rem/1.2 'Trebuchet MS', sans-serif; letter-spacing: 0.14em; padding: 0.65rem 5vw; text-align: center; text-transform: uppercase; }
+        header { align-items: center; background: var(--paper); border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; padding: 1.1rem 5vw; }
+        .brand { align-items: center; display: flex; gap: 0.7rem; }
+        .brand-mark { background: var(--rust); color: var(--paper); font: 900 1rem 'Trebuchet MS', sans-serif; letter-spacing: -0.08em; padding: 0.45rem 0.4rem; transform: rotate(-4deg); }
+        .brand-name { font: 900 1rem/1 'Trebuchet MS', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; }
+        .brand-name small { color: var(--muted); display: block; font-size: 0.62rem; letter-spacing: 0.18em; margin-top: 0.3rem; }
+        nav { align-items: center; display: flex; gap: 1.7rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+        nav a { color: var(--muted); }
+        nav a:hover { color: var(--rust); }
+        .nav-cta { background: var(--forest); color: var(--paper) !important; padding: 0.7rem 1rem; }
+
+        .hero { background: var(--forest); color: var(--paper); display: grid; grid-template-columns: 1.1fr 0.9fr; min-height: 600px; overflow: hidden; }
+        .hero-copy { align-self: center; max-width: 720px; padding: 6rem 8vw 6rem 10vw; }
+        .eyebrow { color: var(--lime); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+        h1 { font-size: clamp(3.5rem, 7vw, 7.4rem); letter-spacing: -0.075em; line-height: 0.88; margin: 1.2rem 0 1.6rem; max-width: 760px; }
+        .hero-copy p { color: #dce7db; font-size: 1.2rem; max-width: 510px; }
+        .hero-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 2.2rem; }
+        .button { border: 0; cursor: pointer; display: inline-block; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.12em; padding: 1rem 1.25rem; text-transform: uppercase; }
+        .button-primary { background: var(--lime); color: var(--pine); }
+        .button-light { border-bottom: 1px solid var(--lime); color: var(--paper); padding: 0.75rem 0; }
+        .hero-art { background: url('pics/bbltap.png') center/cover; min-height: 480px; position: relative; }
+        .hero-art::after { background: linear-gradient(90deg, var(--forest) 0%, transparent 30%), linear-gradient(0deg, rgba(13,48,41,0.35), transparent 50%); content: ''; inset: 0; position: absolute; }
+        .hero-stamp { background: var(--lime); bottom: 8%; color: var(--pine); font: 900 0.75rem/1.25 'Trebuchet MS', sans-serif; letter-spacing: 0.08em; max-width: 155px; padding: 1rem; position: absolute; right: 10%; text-transform: uppercase; transform: rotate(5deg); z-index: 1; }
+
+        .section { padding: 6rem 10vw; }
+        .section-intro { align-items: end; display: flex; justify-content: space-between; margin-bottom: 2.5rem; }
+        h2 { color: var(--pine); font-size: clamp(2.2rem, 4vw, 4.5rem); letter-spacing: -0.07em; line-height: 0.92; max-width: 600px; }
+        .section-intro p { color: var(--muted); max-width: 300px; }
+        .proof-grid { display: grid; gap: 1px; grid-template-columns: repeat(3, 1fr); }
+        .proof { background: var(--paper); border-top: 4px solid var(--rust); padding: 2rem; }
+        .proof-number { color: var(--rust); font: 900 2.4rem 'Trebuchet MS', sans-serif; }
+        .proof h3 { font-size: 1rem; letter-spacing: 0.05em; margin: 1.1rem 0 0.6rem; text-transform: uppercase; }
+        .proof p { color: var(--muted); font-size: 0.96rem; }
+
+        .lineup { background: var(--paper); }
+        .beer-grid { display: grid; gap: 1.2rem; grid-template-columns: repeat(4, 1fr); }
+        .beer-card { border: 1px solid var(--line); display: flex; flex-direction: column; min-width: 0; }
+        .beer-card img { aspect-ratio: 1 / 0.82; object-fit: cover; width: 100%; }
+        .beer-card-content { padding: 1.25rem; }
+        .tag { color: var(--rust); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+        .beer-card h3 { font-size: 1.3rem; margin: 0.4rem 0; }
+        .beer-card p { color: var(--muted); font-size: 0.9rem; }
+        .beer-spec { border-top: 1px solid var(--line); color: var(--forest); display: flex; font: 700 0.69rem 'Trebuchet MS', sans-serif; justify-content: space-between; margin-top: 1.2rem; padding-top: 0.7rem; text-transform: uppercase; }
+
+        .contact { background: var(--rust); color: var(--paper); display: grid; gap: 5rem; grid-template-columns: 0.85fr 1.15fr; }
+        .contact h2 { color: var(--paper); margin: 1rem 0 1.2rem; }
+        .contact-copy p { color: #ffe8dc; max-width: 380px; }
+        .contact-note { border-left: 2px solid var(--lime); color: var(--lime) !important; font: 700 0.8rem 'Trebuchet MS', sans-serif; letter-spacing: 0.08em; margin-top: 2rem; padding-left: 1rem; text-transform: uppercase; }
+        form { background: var(--paper); color: var(--ink); display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; padding: 2rem; }
+        .field { display: flex; flex-direction: column; gap: 0.35rem; }
+        .field-full { grid-column: 1 / -1; }
+        label { font: 700 0.68rem 'Trebuchet MS', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; }
+        input, select, textarea { background: transparent; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; color: var(--ink); font-size: 1rem; padding: 0.6rem 0; width: 100%; }
+        textarea { min-height: 84px; resize: vertical; }
+        .form-footer { align-items: center; display: flex; gap: 1rem; grid-column: 1 / -1; justify-content: space-between; margin-top: 0.4rem; }
+        .form-footer small { color: var(--muted); font-size: 0.75rem; max-width: 220px; }
+        .form-footer .button { background: var(--forest); color: var(--paper); }
+
+        footer { align-items: center; background: var(--pine); color: #aab9ad; display: flex; font: 0.75rem 'Trebuchet MS', sans-serif; justify-content: space-between; padding: 1.5rem 10vw; }
+        footer strong { color: var(--lime); letter-spacing: 0.1em; text-transform: uppercase; }
+
+        @media (max-width: 800px) {
+            header { align-items: flex-start; gap: 1rem; }
+            nav { gap: 0.8rem; }
+            nav a:not(.nav-cta) { display: none; }
+            .hero { grid-template-columns: 1fr; }
+            .hero-copy { padding: 5rem 8vw 3rem; }
+            .hero-art { min-height: 330px; }
+            .hero-art::after { background: linear-gradient(0deg, var(--forest) 0%, transparent 40%); }
+            .section { padding: 4.5rem 8vw; }
+            .section-intro { align-items: start; flex-direction: column; gap: 1rem; }
+            .proof-grid, .beer-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact { gap: 2.5rem; grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 520px) {
+            .brand-name { font-size: 0.82rem; }
+            .hero-copy { padding-top: 4rem; }
+            h1 { font-size: 4rem; }
+            .proof-grid, .beer-grid, form { grid-template-columns: 1fr; }
+            .field-full, .form-footer { grid-column: auto; }
+            .form-footer { align-items: flex-start; flex-direction: column; }
+            footer { align-items: flex-start; flex-direction: column; gap: 0.6rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="topline">Wholesale draft partnerships for bars, restaurants, taprooms, and bottle shops</div>
+    <header>
+        <a class="brand" href="#top" aria-label="Big Beer Legends sales home"><span class="brand-mark">BBL</span><span class="brand-name">Big Beer Legends<small>Venue sales department</small></span></a>
+        <nav aria-label="Main navigation"><a href="#program">The program</a><a href="#lineup">Draft lineup</a><a class="nav-cta" href="#contact">Talk to sales</a></nav>
+    </header>
+
+    <main id="top">
+        <section class="hero">
+            <div class="hero-copy"><p class="eyebrow">Make your taps legendary</p><h1>Put a better beer on the board.</h1><p>Big Beer Legends brings characterful craft beer, dependable kegs, and a real brewery partner to the venues that pour it.</p><div class="hero-actions"><a class="button button-primary" href="#contact">Build your tap list</a><a class="button button-light" href="#lineup">See the lineup</a></div></div>
+            <div class="hero-art" role="img" aria-label="A fresh beer pour at a tap"><div class="hero-stamp">Draft beer with a point of view</div></div>
+        </section>
+
+        <section class="section" id="program"><div class="section-intro"><div><p class="eyebrow" style="color: var(--rust);">Why pour BBL</p><h2>A tap partner who shows up.</h2></div><p>Your guests get memorable beer. Your team gets a partner who makes ordering, selling, and reordering easy.</p></div><div class="proof-grid"><article class="proof"><span class="proof-number">01</span><h3>Built for the board</h3><p>Approachable core beers with enough personality to give your draft list a signature.</p></article><article class="proof"><span class="proof-number">02</span><h3>Fresh, on schedule</h3><p>Reliable keg planning and responsive communication keep your best sellers flowing.</p></article><article class="proof"><span class="proof-number">03</span><h3>Good for business</h3><p>Sales support, staff education, and tap-day energy designed around your venue.</p></article></div></section>
+
+        <section class="section lineup" id="lineup"><div class="section-intro"><div><p class="eyebrow" style="color: var(--rust);">The draft lineup</p><h2>Four taps. Zero wallflowers.</h2></div><p>Start with a balanced flight, then build around what your guests reach for twice.</p></div><div class="beer-grid">
+            <article class="beer-card"><img src="pics/Beer.jpg" alt="Golden beer in a glass"><div class="beer-card-content"><span class="tag">House pour</span><h3>Key Stroke Lager</h3><p>Bright, crisp, and built for the first round.</p><div class="beer-spec"><span>4.8% ABV</span><span>18 IBU</span></div></div></article>
+            <article class="beer-card"><img src="pics/keystroke.jpg" alt="Hoppy beer in a glass"><div class="beer-card-content"><span class="tag">Hop forward</span><h3>Hazy IPA</h3><p>Juicy citrus, clean bitterness, and a long finish.</p><div class="beer-spec"><span>6.4% ABV</span><span>48 IBU</span></div></div></article>
+            <article class="beer-card"><img src="pics/sour.jpg" alt="Sour beer in a glass"><div class="beer-card-content"><span class="tag">Bright + tart</span><h3>Alvan's Sour</h3><p>Playful fruit and a refreshing snap of acidity.</p><div class="beer-spec"><span>5.2% ABV</span><span>12 IBU</span></div></div></article>
+            <article class="beer-card"><img src="pics/stout.jpg" alt="Dark stout in a glass"><div class="beer-card-content"><span class="tag">Dark roast</span><h3>Dan's Stout</h3><p>Silky body, coffee roast, and a touch of chocolate.</p><div class="beer-spec"><span>6.1% ABV</span><span>32 IBU</span></div></div></article>
+        </div></section>
+
+        <section class="section contact" id="contact"><div class="contact-copy"><p class="eyebrow">Let's talk taps</p><h2>Tell us about your venue.</h2><p>Share a few details and our sales team will follow up with the right beers, keg formats, and next steps for your market.</p><p class="contact-note">No commitment. Just a better conversation about beer.</p></div><form onsubmit="event.preventDefault(); document.getElementById('form-status').textContent = 'Thanks. Our sales team will be in touch soon.';"><div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" required></div><div class="field"><label for="venue">Venue name</label><input id="venue" name="venue" type="text" required></div><div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" required></div><div class="field"><label for="venue-type">Venue type</label><select id="venue-type" name="venue-type" required><option value="">Select one</option><option>Bar or pub</option><option>Restaurant</option><option>Taproom</option><option>Bottle shop</option><option>Event venue</option></select></div><div class="field field-full"><label for="message">What are you looking for?</label><textarea id="message" name="message" placeholder="Tell us about your taps, your guests, or the beer you want to replace."></textarea></div><div class="form-footer"><small id="form-status">We usually reply within one business day.</small><button class="button" type="submit">Start the conversation</button></div></form></section>
+    </main>
+    <footer><strong>Big Beer Legends</strong><span>For venues that take their taps seriously.</span><span>&copy; 2026 BBL</span></footer>
++</body>
++</html>
